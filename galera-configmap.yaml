@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: galera-config
+data:
+  my.cnf: |
+    [mysqld]
+    wsrep_provider=/usr/lib/galera/libgalera_smm.so
+    wsrep_cluster_name=my_cluster
+    wsrep_cluster_address=gcomm://mariadb-0.mariadb,mariadb-1.mariadb,mariadb-2.mariadb
+    wsrep_sst_method=rsync
